@@ -29,8 +29,11 @@ class LanguageService {
     }
 
     deleteLanguage(language_Id){
-        console.log(language_Id);
         return axios.delete(deleteLanguage+"/"+language_Id);
+    }
+
+    updateLanguage(){
+
     }
 
     // genre section
