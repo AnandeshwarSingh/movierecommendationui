@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  background-color: #002235;
+  color: #ffffff; /* Light text for contrast */
+}
+header {
+  background-color: #003a5b; /* Dark blue but lighter than body */
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

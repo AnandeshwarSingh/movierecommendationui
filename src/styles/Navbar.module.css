@@ -1,0 +1,127 @@
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #0C344B;
+    color: #fff;
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Logo (Align Left) */
+  .navbar h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  /* Full Navbar Links (Visible in Desktop Mode) */
+  .navList {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .navList li {
+    display: inline;
+  }
+  
+  .navList li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  .navList li a:hover {
+    color: #f62e2e;
+  }
+  
+  /* Search & Sign In (Properly Aligned) */
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+  }
+  
+  /* Search Input */
+  .searchInput {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Sign-In Button */
+  .signInButton {
+    padding: 5px 10px;
+    background: #f62e2e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .signInButton:hover {
+    background: #d62222;
+  }
+  
+  /* Hide Hamburger Button & Close Button on Desktop */
+  .toggleButton,
+  .closeButton {
+    display: none;
+  }
+  
+  /* 📱 Right-Side Sliding Menu (Only for Mobile & Tablet) */
+  @media (max-width: 992px) {
+    /* Hamburger Menu (Now on Right Side) */
+    .toggleButton {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #fff;
+      position: absolute;
+      right: 20px;
+    }
+  
+    /* Menu Panel (Now Sliding in From Right) */
+    .navList {
+      position: fixed;
+      top: 0;
+      right: -100%; /* Initially Hidden */
+      width: 250px;
+      height: 100vh;
+      background: #002235;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 60px;
+      transition: right 0.3s ease-in-out;
+      display: flex;
+      align-items: start;
+      padding-left: 20px;
+    }
+  
+    .navList.show {
+      right: 0; /* Slide In */
+    }
+  
+    /* Close Button (Now on Right Side) */
+    .navList.show .closeButton {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .searchContainer {
+        margin-right: 40px;  /* Adjust this value as needed */
+      }
+  }

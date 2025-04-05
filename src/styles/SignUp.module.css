@@ -1,0 +1,108 @@
+/* src/styles/SignUp.module.css */
+
+/* Background Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Sign Up Box */
+  .modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f62e2e;
+    margin-bottom: 15px;
+    text-align: left;
+}
+  /* Close Button */
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Input Fields */
+  .inputField {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Sign Up Button */
+  .signUpButton {
+    width: 100%;
+    padding: 12px;
+    background: #f62e2e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .signUpButton:hover {
+    background: #d92020; /* Darker red */
+    transform: scale(1.00); /* Slightly increase size */
+}
+  
+  /* Responsive Design for Mobile & Tablet */
+  @media screen and (max-width: 768px) {
+    .modalContent {
+      width: 85%;
+      max-width: 320px;
+    }
+  
+    .inputField, .signUpButton {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .closeButton {
+      font-size: 18px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .modalContent {
+      width: 90%;
+      max-width: 300px;
+    }
+  
+    .inputField, .signUpButton {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .closeButton {
+      font-size: 18px;
+    }
+  }
+  
