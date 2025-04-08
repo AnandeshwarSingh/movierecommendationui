@@ -5,6 +5,7 @@ import AddLanguageForm from "./AddLanguageForm";
 import ViewLanguage from "./ViewLanguage";
 import AddGenreForm from "./AddGenreForm";
 import ViewGenre from "./ViewGenre";
+import ViewUsers from "./ViewUsers";
 
 const AdminSidebar = () => {
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -13,12 +14,15 @@ const AdminSidebar = () => {
   const [showAddGenreForm, setShowAddGenreForm] = useState(false);
   const [genreOption, setGenreOption] = useState(false);
   const [ShowViewGenre, setShowViewGenre] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false); // for dropdown open/close
+  const [showUserGrid, setShowUserGrid] = useState(false); // for showing grid
 
   const handleAddLanguageClick = () => {
     setShowAddLanguageForm(true);
     setShowViewLanguageGrid(false); // Hide View Language
     setShowAddGenreForm(false);
     setShowViewGenre(false);
+    setShowUserGrid(false);
   };
 
   const handleViewLanguageClick = () => {
@@ -26,6 +30,7 @@ const AdminSidebar = () => {
     setShowAddLanguageForm(false);
     setShowAddGenreForm(false);
     setShowViewGenre(false);
+    setShowUserGrid(false);
   };
 
   const handleAddGenreClick = () => {
@@ -33,9 +38,20 @@ const AdminSidebar = () => {
     setShowAddLanguageForm(false);
     setShowViewLanguageGrid(false);
     setShowViewGenre(false);
+    setShowUserGrid(false);
   };
   const handleViewGenreClick = () => {
     setShowViewGenre(true);
+    setShowAddGenreForm(false);
+    setShowAddLanguageForm(false);
+    setShowViewLanguageGrid(false);
+    setShowUserGrid(false);
+  };
+
+  const handleViewUserClick = () => {
+    setShowUserGrid(true);
+    // setUserOption(true);
+    setShowViewGenre(false);
     setShowAddGenreForm(false);
     setShowAddLanguageForm(false);
     setShowViewLanguageGrid(false);
@@ -88,7 +104,18 @@ const AdminSidebar = () => {
               </ul>
             </li>
             <li>
-              <Link to="/admin/users">Users</Link>
+              {/* <Link to="/admin/users">Users</Link> */}
+              <button
+                className="dropdown"
+                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+              >
+                Users {isUserMenuOpen ? "▲" : "▼"}
+              </button>
+              <ul className={`submenu ${isUserMenuOpen ? "show" : ""}`}>
+                <li>
+                  <button onClick={handleViewUserClick}>View Users</button>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -101,7 +128,8 @@ const AdminSidebar = () => {
           {showAddGenreForm && (
             <AddGenreForm onClose={() => setShowAddGenreForm(false)} />
           )}
-          {ShowViewGenre && <ViewGenre/>}
+          {ShowViewGenre && <ViewGenre />}
+          {showUserGrid && <ViewUsers />}
         </div>
       </div>
     </>

@@ -6,7 +6,6 @@ import Language from "../pages/Language";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Admin from "../pages/Admin";
-import DeleteEmployee from "../pages/DeleteLanguage";
 
 const AppRoutes = () => {
     return (
@@ -17,7 +16,6 @@ const AppRoutes = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admin" element={<Admin/>}/>
-            <Route path="deletelang/:languageId" element={<DeleteEmployee/>}/>
         </Routes>
     );
 };

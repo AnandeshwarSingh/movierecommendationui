@@ -3,18 +3,33 @@ import LanguageService from "../services/LanguageService";
 
 const ViewGenre = () => {
   let [genre, setGenre] = useState([]);
+  const [message, setMessage] = useState("");
+
+
+  const fetchGener = async () =>{
+    try{
+      const res = await LanguageService.getGenre();
+      setGenre(res.data);
+    }catch(err){
+      console.error("Error feching data: ",err);
+    }
+  };
+
 
   useEffect(() => {
-    LanguageService.getGenre()
-      .then((res) => {
-        setGenre(res.data);
-      })
-      .catch((err) => {
-        setGenre(err.data);
-        console.err("Error fetching data", err);
-      });
+    fetchGener();
   }, []);
 
+  const handleDelete = async(genre_id) => {
+    try{
+      await LanguageService.deleteGenre(genre_id);
+      setMessage("Genre deleted successfully");
+      fetchGener();
+    }catch(err){
+      setMessage("Error deleting Genre");
+      console.error("Delete error: ",err);
+    }
+  }
   return (
     <>
       <div className="container">
@@ -28,6 +43,10 @@ const ViewGenre = () => {
         >
           Genre
         </h1>
+        {message && (
+        <div className="alert alert-info text-center">{message}</div>
+      )}
+
         <table className="table table-striped">
           <thead>
             <th>Id</th>
@@ -41,8 +60,17 @@ const ViewGenre = () => {
                 <tr key={index}>
                   <td>{e.genre_id}</td>
                   <td>{e.name}</td>
-                  <td>UPDATE</td>
-                  <td>DELETE</td>
+                  <td>
+                  <button className="btn btn-primary">Update</button>
+                  </td>
+                  <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(e.genre_id)}
+                  >
+                    Delete
+                  </button>
+                  </td>
                 </tr>
               ))
             ) : (
