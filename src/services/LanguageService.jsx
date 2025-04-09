@@ -12,8 +12,9 @@ let searchLanguage="http://localhost:8080/admin/searchLanguageById";
 
 // Genre Service
 
-let saveGenre = "http://localhost:8080/admin/addGenre"
-let ViewGenre = "http://localhost:8080/admin/viewAllGenre"
+let saveGenre = "http://localhost:8080/admin/addGenre";
+let ViewGenre = "http://localhost:8080/admin/viewAllGenre";
+let deleteGenre = "http://localhost:8080/admin/deleteGenreById";
 
 
 
@@ -46,6 +47,10 @@ class LanguageService {
 
     getGenre(){
         return axios.get(ViewGenre);
+    }
+
+    deleteGenre(generId){
+        return axios.delete(deleteGenre+"/"+generId);
     }
 }
 

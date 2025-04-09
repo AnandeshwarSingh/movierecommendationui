@@ -42,9 +42,7 @@ const ViewLanguage = () => {
         Language
       </h1>
 
-      {message && (
-        <div className="alert alert-info text-center">{message}</div>
-      )}
+      {message && <div className="alert alert-info text-center">{message}</div>}
 
       <table className="table table-striped">
         <thead>

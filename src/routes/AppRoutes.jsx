@@ -6,10 +6,6 @@ import Language from "../pages/Language";
 // import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Admin from "../pages/Admin";
-import MovieList from "../pages/ViewMovie";
-import AddMovieForm from "../pages/AddMovieForm";
-// import DeleteEmployee from "../pages/DeleteLanguage";
-import UpdateLanguage from "../pages/UpdateLanguage";
 
 const AppRoutes = () => {
     return (
@@ -20,8 +16,6 @@ const AppRoutes = () => {
             <Route path="/about" element={<MovieList/>} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admin" element={<Admin/>}/>
-            <Route path="/update" element={<UpdateLanguage />} />
-            {/* <Route path="deletelang/:languageId" element={<DeleteEmployee/>}/> */}
         </Routes>
     );
 };
