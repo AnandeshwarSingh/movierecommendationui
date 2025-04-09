@@ -28,6 +28,7 @@ const Header = () => {
         <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
         <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
         <li><Link to="/admin" onClick={()=>setMenuOpen(false)}>Admin</Link></li>
+        <li><Link to="/update" onClick={()=>setMenuOpen(false)}>Update</Link></li>
       </ul>
 
       {/* Search & Sign In (Always Visible) */}

@@ -8,6 +8,7 @@ import axios from "axios";
 let viewLanguage = "http://localhost:8080/admin/viewAllLanguage";
 let saveLanguage = "http://localhost:8080/admin/addLanguage";
 let deleteLanguage = "http://localhost:8080/admin/deleteLanguageById";
+let searchLanguage="http://localhost:8080/admin/searchLanguageById";
 
 // Genre Service
 
@@ -32,8 +33,8 @@ class LanguageService {
         return axios.delete(deleteLanguage+"/"+language_Id);
     }
 
-    updateLanguage(){
-
+    searchLanguage(language_Id){
+        return axios.update(searchLanguage+"/"+language_Id);
     }
 
     // genre section
