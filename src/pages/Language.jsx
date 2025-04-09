@@ -4,7 +4,7 @@ const Language = () => {
     return (
         <>
             <h1>Choose Your Preferred Language</h1>
-            <AddGenreForm/>
+            {/* <AddGenreForm/> */}
         </>
 
     );

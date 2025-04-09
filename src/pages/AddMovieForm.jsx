@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import "../styles/AddMovieForm.css";
 import LanguageService from "../services/LanguageService";
 import axios from "axios";
@@ -8,6 +9,7 @@ const AddMovieForm = ({ onClose }) => {
   const [genre, setGenre] = useState([]);
 
   // Fetch Languages
+
   useEffect(() => {
     const fetchLanguages = async () => {
       try {
@@ -35,6 +37,7 @@ const AddMovieForm = ({ onClose }) => {
     fetchGenre();
   }, []);
 
+
   const [movie, setMovie] = useState({
     title: "",
     releaseYear: "",
@@ -48,7 +51,6 @@ const AddMovieForm = ({ onClose }) => {
   });
 
   const [imagefile, setImageFile] = useState(null);
-  // const [imageUrl, setImageUrl] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +62,7 @@ const AddMovieForm = ({ onClose }) => {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     const formData = new FormData();
@@ -74,7 +77,7 @@ const AddMovieForm = ({ onClose }) => {
       );
       const uploadedPath = res.data; // e.g. "/images/f5.jpg"
       imageName = uploadedPath.split("/").pop(); // "f5.jpg"
-      // setImageUrl("http://localhost:8080" + uploadedPath);
+      
     } catch (err) {
       console.error("Upload failed", err);
     }
@@ -224,6 +227,7 @@ const AddMovieForm = ({ onClose }) => {
         </button>
 
       </form>
+
     </div>
   );
 };
