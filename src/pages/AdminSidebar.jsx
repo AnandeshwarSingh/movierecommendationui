@@ -6,6 +6,8 @@ import ViewLanguage from "./ViewLanguage";
 import AddGenreForm from "./AddGenreForm";
 import ViewGenre from "./ViewGenre";
 import ViewUsers from "./ViewUsers";
+import AddMovieForm from "./AddMovieForm";
+import ViewMovies from "./ViewMovies";
 
 const AdminSidebar = () => {
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -14,8 +16,11 @@ const AdminSidebar = () => {
   const [showAddGenreForm, setShowAddGenreForm] = useState(false);
   const [genreOption, setGenreOption] = useState(false);
   const [ShowViewGenre, setShowViewGenre] = useState(false);
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false); // for dropdown open/close
-  const [showUserGrid, setShowUserGrid] = useState(false); // for showing grid
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [showUserGrid, setShowUserGrid] = useState(false);
+  const [movieOption, setMovieOption] = useState(false);
+  const [showAddMovieForm, setAddMovieForm] = useState(false);
+  const [showViewMovieGrid,setShowViewMovieGrid] = useState(false);
 
   const handleAddLanguageClick = () => {
     setShowAddLanguageForm(true);
@@ -23,6 +28,8 @@ const AdminSidebar = () => {
     setShowAddGenreForm(false);
     setShowViewGenre(false);
     setShowUserGrid(false);
+    setAddMovieForm(false);
+    setShowViewMovieGrid(false);
   };
 
   const handleViewLanguageClick = () => {
@@ -31,6 +38,8 @@ const AdminSidebar = () => {
     setShowAddGenreForm(false);
     setShowViewGenre(false);
     setShowUserGrid(false);
+    setAddMovieForm(false);
+    setShowViewMovieGrid(false);
   };
 
   const handleAddGenreClick = () => {
@@ -39,6 +48,8 @@ const AdminSidebar = () => {
     setShowViewLanguageGrid(false);
     setShowViewGenre(false);
     setShowUserGrid(false);
+    setAddMovieForm(false);
+    setShowViewMovieGrid(false);
   };
   const handleViewGenreClick = () => {
     setShowViewGenre(true);
@@ -46,6 +57,8 @@ const AdminSidebar = () => {
     setShowAddLanguageForm(false);
     setShowViewLanguageGrid(false);
     setShowUserGrid(false);
+    setAddMovieForm(false);
+    setShowViewMovieGrid(false);
   };
 
   const handleViewUserClick = () => {
@@ -55,7 +68,30 @@ const AdminSidebar = () => {
     setShowAddGenreForm(false);
     setShowAddLanguageForm(false);
     setShowViewLanguageGrid(false);
+    setAddMovieForm(false);
+    setShowViewMovieGrid(false);
   };
+
+  const handleAddMovie = ()=>{
+    setAddMovieForm(true);
+    setShowUserGrid(false);
+    setShowViewGenre(false);
+    setShowAddGenreForm(false);
+    setShowAddLanguageForm(false);
+    setShowViewLanguageGrid(false);
+    setShowViewMovieGrid(false);
+
+  }
+
+  const handleViewMovieClick = ()=> {
+    setShowViewMovieGrid(true);
+    setShowViewLanguageGrid(false);
+    setShowAddLanguageForm(false);
+    setShowAddGenreForm(false);
+    setShowViewGenre(false);
+    setShowUserGrid(false);
+    setAddMovieForm(false);
+  }
 
   return (
     <>
@@ -64,7 +100,25 @@ const AdminSidebar = () => {
           <h2>Admin Panel</h2>
           <ul className="menu">
             <li>
-              <Link to="/admin/movies">Movies</Link>
+              {/* <Link to="/admin/movies">Movies</Link> */}
+              <button
+              className="dropdown"
+              onClick={() => setMovieOption (!movieOption)}
+              >
+              Movies {movieOption ? "▲" : "▼"}
+              </button>
+              <ul className={`submenu ${movieOption ? "show" : ""}`}>
+                <li>
+                  <button onClick={handleAddMovie}>Add Movie</button>
+                  {/* <Link to="/admin/language/add">Add Language</Link> */}
+                </li>
+                <li>
+                  <button onClick={handleViewMovieClick}>
+                    {/* <Link to="/admin/language/view">View Language</Link> */}
+                    View Movie
+                  </button>
+                </li>
+              </ul>
             </li>
             <li>
               <button
@@ -130,6 +184,10 @@ const AdminSidebar = () => {
           )}
           {ShowViewGenre && <ViewGenre />}
           {showUserGrid && <ViewUsers />}
+          {showAddMovieForm && (
+            <AddMovieForm onClose={() => setAddMovieForm(false)} />
+          )}
+          {showViewMovieGrid && <ViewMovies/>}
         </div>
       </div>
     </>
